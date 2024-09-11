@@ -4,12 +4,19 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import upload from './middleware/upload.js';
 import cors from 'cors';
+
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+
+// Configure CORS to allow requests from your frontend
+app.use(cors({
+  origin: '*',  // Allow this specific origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow specific HTTP methods
+  credentials: true  // Enable cookies and credentials (if needed)
+}));
 
 // Routes
 app.use('/api/auth', authRoutes);
