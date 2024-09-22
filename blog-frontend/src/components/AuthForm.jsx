@@ -14,7 +14,8 @@ const AuthForm = ({ type }) => {
       localStorage.setItem('token', data.token);
       window.location.href = '/'; // Redirect after successful login
     } catch (error) {
-      console.error('Authentication error', error);
+      console.log(error);
+      // console.error('Authentication error', error);
     }
   };
 
