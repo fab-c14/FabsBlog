@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-
+import BACKEND_URL from '../config';
+import { useNavigate } from 'react-router-dom';
 const AuthForm = ({ type }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = type === 'login' ? 'https://super-duper-broccoli-xxgjqpx957jh6r99-5000.app.github.dev/api/auth/login' : 'https://super-duper-broccoli-xxgjqpx957jh6r99-5000.app.github.dev/api/auth/register';
+
+    const url = type === 'login' ? `${BACKEND_URL}/api/auth/login` : `${BACKEND_URL}/api/auth/register`;
     try {
       const { data } = await axios.post(url, { email, password });
       localStorage.setItem('token', data.token);
-      window.location.href = '/'; // Redirect after successful login
+      navigate("/")
     } catch (error) {
       console.log(error);
       // console.error('Authentication error', error);

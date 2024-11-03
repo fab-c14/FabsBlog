@@ -10,11 +10,13 @@ import AppNavbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import PostDetailPage from './pages/PostDetailPage';
 import ProfilePage from './pages/Profile';
+import PostList from './components/PostList';
 
 const App = () => {
   return (
     <Router>
       <AppNavbar />
+      <PostList />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />

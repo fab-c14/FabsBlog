@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import BACKEND_URL from '../config';
+import { useNavigate } from 'react-router-dom';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
+    formData.append('author',"fab-c14");
     if (image) formData.append('image', image);
 
     try {
-      await axios.post('/api/posts', formData, {
+      await axios.post(`${BACKEND_URL}/api/posts`, formData, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
-      window.location.href = '/'; // Redirect after successful post creation
+      navigate('/') // Redirect after successful post creation
     } catch (error) {
       console.error('Post creation error', error);
     }

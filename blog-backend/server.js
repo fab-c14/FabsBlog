@@ -2,8 +2,10 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
-import upload from './middleware/upload.js';
+import postRoutes from './routes/postRoutes.js';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 connectDB();
@@ -18,13 +20,13 @@ app.use(cors({
   credentials: true  // Enable cookies and credentials (if needed)
 }));
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/', postRoutes);
 
-// Upload route for images
-app.post('/api/upload', upload.single('image'), (req, res) => {
-  res.json({ filePath: `/uploads/${req.file.filename}` });
-});
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
