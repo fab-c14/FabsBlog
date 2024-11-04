@@ -1,8 +1,11 @@
 import React from 'react'
-
+import PostList from '../Components/PostList'
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      <PostList />
+
+    </div>
   )
 }
 
