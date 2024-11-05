@@ -4,7 +4,6 @@ const HomePage = () => {
   return (
     <div>
       <PostList />
-
     </div>
   )
 }

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../index.css'
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import '../index.css'; // Ensure Tailwind CSS is available globally
+
 const AppNavbar = () => {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
@@ -11,46 +14,47 @@ const AppNavbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-semibold hover:text-gray-300">
-          BlogApp
-        </Link>
-        <div className="flex space-x-4">
-          {!token ? (
-            <>
-              <Link
-                to="/login"
-                className="text-lg hover:text-gray-300 transition duration-200"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className="text-lg hover:text-gray-300 transition duration-200"
-              >
-                Register
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/profile"
-                className="text-lg hover:text-gray-300 transition duration-200"
-              >
-                Profile
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="text-lg bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition duration-200"
-              >
-                Logout
-              </button>
-            </>
-          )}
-        </div>
-      </div>
-    </nav>
+    <Navbar bg="dark" variant="dark" expand="lg" className="shadow-lg">
+      <Container>
+        <LinkContainer to="/">
+          <Navbar.Brand className="font-bold text-2xl">BlogApp</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto flex items-center space-x-4">
+            {!token ? (
+              <>
+                <LinkContainer to="/login">
+                  <Nav.Link className="text-lg hover:text-gray-300 transition duration-200">
+                    Login
+                  </Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/register">
+                  <Nav.Link className="text-lg hover:text-gray-300 transition duration-200">
+                    Register
+                  </Nav.Link>
+                </LinkContainer>
+              </>
+            ) : (
+              <>
+                <LinkContainer to="/profile">
+                  <Nav.Link className="text-lg hover:text-gray-300 transition duration-200">
+                    Profile
+                  </Nav.Link>
+                </LinkContainer>
+                <Button
+                  onClick={handleLogout}
+                  variant="danger"
+                  className="text-lg px-3 py-1 rounded-lg hover:bg-red-700 transition duration-200"
+                >
+                  Logout
+                </Button>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
