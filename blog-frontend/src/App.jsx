@@ -26,7 +26,7 @@ const App = () => {
         <Route
           path="/create-post"
           element={
-            <PrivateRoute>
+            <PrivateRoute children={1,2,3}>
               <CreatePostPage />
             </PrivateRoute>
           }

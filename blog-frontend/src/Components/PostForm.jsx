@@ -16,7 +16,7 @@ const PostForm = () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('content', content);
-    formData.append('author', 'fab-c14'); // Mock author ID
+    formData.append('author', 'fab-c14'); 
     if (image) formData.append('image', image);
 
     try {
