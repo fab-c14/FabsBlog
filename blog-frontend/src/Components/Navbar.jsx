@@ -14,7 +14,7 @@ const AppNavbar = () => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="shadow-lg">
+    <Navbar bg="" variant="light" expand="lg" className="font-bold font-soure-sans-pro bg-gray-200 rounded-xl shadow-lg mt-2">
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand className="font-bold text-2xl">BlogApp</Navbar.Brand>
@@ -25,12 +25,12 @@ const AppNavbar = () => {
             {!token ? (
               <>
                 <LinkContainer to="/login">
-                  <Nav.Link className="text-lg hover:text-gray-300 transition duration-200">
+                  <Nav.Link className="text-lg hover:text-gray-300 py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500">
                     Login
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/register">
-                  <Nav.Link className="text-lg hover:text-gray-300 transition duration-200">
+                  <Nav.Link className="text-lg hover:text-gray-300 py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500">
                     Register
                   </Nav.Link>
                 </LinkContainer>
@@ -38,14 +38,14 @@ const AppNavbar = () => {
             ) : (
               <>
                 <LinkContainer to="/profile">
-                  <Nav.Link className="text-lg hover:text-gray-300 transition duration-200">
+                  <Nav.Link className="text-lg py-3 px-3 hover:text-gray-300 hover:bg-blue-300 rounded-lg b transition duration-200">
                     Profile
                   </Nav.Link>
                 </LinkContainer>
                 <Button
                   onClick={handleLogout}
                   variant="danger"
-                  className="text-lg px-3 py-1 rounded-lg hover:bg-red-700 transition duration-200"
+                  className="text-lg px-3 py-3 rounded-lg hover:bg-red-700 transition b duration-200"
                 >
                   Logout
                 </Button>

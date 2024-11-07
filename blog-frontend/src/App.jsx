@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'tachyons/css/tachyons.min.css';
 import AppNavbar from './Components/Navbar';
 import PrivateRoute from './Components/PrivateRoute';
-import PostDetailPage from './Pages/PostDetailPage';
+
 import ProfilePage from './Pages/Profile';
 
 
@@ -20,7 +20,6 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/posts/:id" element={<PostDetailPage />} />
         <Route path="/profile" element={<ProfilePage />} />
 
         <Route
