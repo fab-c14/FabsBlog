@@ -16,7 +16,7 @@ const ProfilePage = () => {
           <Row className="mb-4">
             <Col xs={12} md={4} className="flex justify-center">
               <div className="w-32 h-32 bg-gray-300 rounded-full overflow-hidden">
-                {/* Placeholder image */}
+               
                 <img
                   src="/default-avatar.png"
                   alt="User Avatar"

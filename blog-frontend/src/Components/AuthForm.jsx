@@ -24,9 +24,9 @@ const AuthForm = ({ type }) => {
 
   return (
     <Container className="min-h-screen flex items-center justify-center">
-      <Row className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
+      <Row className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg rounded-2xl">
         <Col>
-          <h2 className="text-2xl font-bold mb-4 text-center">{type === 'login' ? 'Login' : 'Register'}</h2>
+          <h2 className="text-3xl rounded-sm px-2 py-2 b mb-4 text-center">{type === 'login' ? 'Login' : 'Register'}</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail" className="mb-3">
               <Form.Label className="font-medium text-lg">Email address</Form.Label>
@@ -35,7 +35,7 @@ const AuthForm = ({ type }) => {
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="border border-gray-300 rounded-lg focus:ring focus:ring-blue-500"
+                className="py-2 shadow-md bg-black white text-white"
               />
             </Form.Group>
 
@@ -46,14 +46,14 @@ const AuthForm = ({ type }) => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="border border-gray-300 rounded-lg focus:ring focus:ring-blue-500"
+                className="py-2 shadow-md bg-black white text-white"
               />
             </Form.Group>
 
             <Button
-              variant="primary"
+            variant="warning"
               type="submit"
-              className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200"
+              className="w-full b py-2 hover:bg-green rounded-xl "
             >
               {type === 'login' ? 'Login' : 'Register'}
             </Button>
