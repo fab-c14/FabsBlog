@@ -29,16 +29,16 @@ const PostList = () => {
 
   return (
     <Container className="mt-5">
-      <h1 className="tc f1 mb-5" style={{ fontFamily: "'Poppins', sans-serif" }}>Blog Posts</h1>
+      <h1 className="tc f1 bg-red-300 rounded-lg px-3 py-3 shadow-xl" style={{ fontFamily: "'Poppins', sans-serif" }}>Blog Posts</h1>
       <Row>
         {posts.map((post) => (
-          <Col xs={12} className="mb-4" key={post._id}>
-            <Card className="shadow-3 grow">
+          <Col xs={12} className="rounded-lg" key={post._id}>
+            <Card className="bg-gray-200">
               {post.imageUrl && (
-                <Card.Img variant="top" src={post.imageUrl} alt={post.title} className="h5 cover" />
+                <Card.Img variant="top" src={post.imageUrl} alt={post.title} className="h6 cover center " />
               )}
               <Card.Body>
-                <Card.Title className="f3" style={{ fontFamily: "'Poppins', sans-serif" }}>{post.title}</Card.Title>
+                <Card.Title className="f3 tc" style={{ fontFamily: "'Poppins', sans-serif" }}>{post.title}</Card.Title>
                 <Card.Text className="text-gray-700" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   {post.content.substring(0, 150)}...
                 </Card.Text>
