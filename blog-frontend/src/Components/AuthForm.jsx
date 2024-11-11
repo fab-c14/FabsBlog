@@ -35,7 +35,7 @@ const AuthForm = ({ type }) => {
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="py-2 shadow-md bg-black white text-white"
+                className="shadow-md b rounded-lg py-3 hover:text-xl"
               />
             </Form.Group>
 
@@ -46,17 +46,16 @@ const AuthForm = ({ type }) => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="py-2 shadow-md bg-black white text-white"
+                className="shadow-md  b rounded-lg  py-3 hover:text-xl "
               />
             </Form.Group>
 
-            <Button
-            variant="warning"
+            <button
               type="submit"
-              className="w-full b py-2 hover:bg-green rounded-xl "
+              className="w-full b py-3 bg-green text-lg rounded-xl hover:bg-red-500 border-green shadow-outer grow hover:text-xl hover:border-x-8 border-purple-600 transition duration-500"
             >
               {type === 'login' ? 'Login' : 'Register'}
-            </Button>
+            </button>
           </Form>
         </Col>
       </Row>

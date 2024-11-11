@@ -17,7 +17,7 @@ const AppNavbar = () => {
     <Navbar bg="" variant="light" expand="lg" className="font-bold font-soure-sans-pro bg-gray-200 rounded-xl shadow-lg mt-2">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className="font-bold text-2xl">BlogApp</Navbar.Brand>
+          <Navbar.Brand className="font-bold text-3xl">BlogApp</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -25,12 +25,12 @@ const AppNavbar = () => {
             {!token ? (
               <>
                 <LinkContainer to="/login">
-                  <Nav.Link className="text-lg hover:text-gray-300 py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500">
+                  <Nav.Link className="text-2xl py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500 hover:shadow-xl hover:text-2xl">
                     Login
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/register">
-                  <Nav.Link className="text-lg hover:text-gray-300 py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500">
+                  <Nav.Link className="text-lg py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500 hover:shadow-xl hover:text-2xl">
                     Register
                   </Nav.Link>
                 </LinkContainer>
