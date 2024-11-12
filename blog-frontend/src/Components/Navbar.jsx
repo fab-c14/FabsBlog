@@ -25,12 +25,12 @@ const AppNavbar = () => {
             {!token ? (
               <>
                 <LinkContainer to="/login">
-                  <Nav.Link className="text-2xl py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500 hover:shadow-xl hover:text-2xl">
+                  <Nav.Link className="text-2xl py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500 hover:shadow-xl">
                     Login
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/register">
-                  <Nav.Link className="text-lg py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500 hover:shadow-xl hover:text-2xl">
+                  <Nav.Link className="text-lg py-3 px-3 rounded-lg b hover:bg-blue-300 hover:underline transition duration-500 hover:shadow-xl">
                     Register
                   </Nav.Link>
                 </LinkContainer>

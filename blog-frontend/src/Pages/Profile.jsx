@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
   const user = JSON.parse(localStorage.getItem('user')) || {
@@ -32,13 +33,16 @@ const ProfilePage = () => {
               <p className="text-md text-gray-600 mb-3">
                 <strong>Joined:</strong> {new Date(user.joinedDate).toLocaleDateString()}
               </p>
-              <p className="text-md text-gray-600 mb-4">
+              <p className="text-md text-gray-600 ">
                 <strong>Bio:</strong> {user.bio}
               </p>
-              <Button variant="primary" className="mr-2">
+              <hr className='tc red w-50 mb-4 text-black' />
+              <span className='tc mb-3'>
+              <Link  className="mr-2 disabled grow px-2 py-3 b text-black rounded-xl bg-yellow grow">
                 Edit Profile
-              </Button>
-              <Button variant="outline-secondary">Settings</Button>
+              </Link>
+              <Link className='px-2 py-3 button bg-green-500 rounded-xl b grow text-black' to="/create-post">Settings</Link>
+              </span>
             </Col>
           </Row>
         </Card.Body>

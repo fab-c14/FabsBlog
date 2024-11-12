@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, Button, Pagination, Container, Row, Col } from 'react-bootstrap';
+import { Pagination, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import BACKEND_URL from '../config';
 import '../index.css'; // Ensure your index.css applies imported Google Fonts
@@ -29,24 +29,25 @@ const PostList = () => {
 
   return (
     <Container className="mt-5">
-      <h1 className="tc f1 bg-red-300 rounded-lg px-3 py-3 shadow-xl" style={{ fontFamily: "'Poppins', sans-serif" }}>Blog Posts</h1>
+      <h1 className="tc f1 bg-red-300 rounded-lg px-3 py-3 shadow-xl " style={{ fontFamily: "'Poppins', sans-serif" }}>Blog Posts</h1>
       <Row>
         {posts.map((post) => (
-          <Col xs={12} className="rounded-lg" key={post._id}>
-            <Card className="bg-gray-200">
+          <Col xs={12} key={post._id}>
+            <div className="post bg-gray-100 p-4 mb-4 rounded-lg shadow-xl d-flex align-items-center hover:bg-yellow-100 hover:cursor-pointer border-blue-800 hover:border-x-2 transition duration-400">
               {post.imageUrl && (
-                <Card.Img variant="top" src={post.imageUrl} alt={post.title} className="h6 cover center " />
+                <img src={post.imageUrl} alt={post.title} className="w-25 mr-4 rounded" />
               )}
-              <Card.Body>
-                <Card.Title className="f3 tc" style={{ fontFamily: "'Poppins', sans-serif" }}>{post.title}</Card.Title>
-                <Card.Text className="text-gray-700" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  {post.content.substring(0, 150)}...
-                </Card.Text>
-                <Link to={`/posts/${post._id}`}>
+              <div className="flex-grow-1">
+                <h2 className="f2 mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>{post.title}</h2>
+                <p className="text-gray-700 mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  {post.content.substring(0,700)}...
+                </p>
+                {/* Uncomment below lines if you add a detailed view */}
+                {/* <Link to={`/posts/${post._id}`}>
                   <Button variant="outline-primary">Read More</Button>
-                </Link>
-              </Card.Body>
-            </Card>
+                </Link> */}
+              </div>
+            </div>
           </Col>
         ))}
       </Row>
