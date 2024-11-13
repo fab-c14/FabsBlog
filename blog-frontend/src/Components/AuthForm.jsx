@@ -24,7 +24,7 @@ const AuthForm = ({ type }) => {
 
   return (
     <Container className="min-h-screen flex items-center justify-center">
-      <Row className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg rounded-2xl">
+      <Row className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg ">
         <Col>
           <h2 className="text-3xl rounded-sm px-2 py-2 b mb-4 text-center">{type === 'login' ? 'Login' : 'Register'}</h2>
           <Form onSubmit={handleSubmit}>
@@ -35,7 +35,7 @@ const AuthForm = ({ type }) => {
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="shadow-md b rounded-lg py-3 hover:text-xl"
+                className="shadow-lg py-3 hover:text-xl rounded-full"
               />
             </Form.Group>
 
@@ -46,13 +46,13 @@ const AuthForm = ({ type }) => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="shadow-md  b rounded-lg  py-3 hover:text-xl "
+                className="shadow-lg  b rounded-full  py-3 hover:text-xl  "
               />
             </Form.Group>
 
             <button
               type="submit"
-              className="w-full b py-3 bg-green text-lg rounded-xl hover:bg-red-500 border-green shadow-outer grow  hover:border-x-8 border-purple-600 transition duration-400"
+              className="w-full b py-3 shadow-lg  text-lg rounded-xl font-bold grow  border-green-200  hover:border-x-8 hover:border-red-200  animate-bounce transition duration-200"
             >
               {type === 'login' ? 'Login' : 'Register'}
             </button>

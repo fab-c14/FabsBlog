@@ -5,7 +5,7 @@ import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import CreatePostPage from './Pages/CreatePostPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'tachyons/css/tachyons.min.css';
+
 import AppNavbar from './Components/Navbar';
 import PrivateRoute from './Components/PrivateRoute';
 
