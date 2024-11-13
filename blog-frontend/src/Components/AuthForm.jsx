@@ -52,7 +52,7 @@ const AuthForm = ({ type }) => {
 
             <button
               type="submit"
-              className="w-full b py-3 bg-green text-lg rounded-xl hover:bg-red-500 border-green shadow-outer grow hover:text-xl hover:border-x-8 border-purple-600 transition duration-500"
+              className="w-full b py-3 bg-green text-lg rounded-xl hover:bg-red-500 border-green shadow-outer grow  hover:border-x-8 border-purple-600 transition duration-400"
             >
               {type === 'login' ? 'Login' : 'Register'}
             </button>

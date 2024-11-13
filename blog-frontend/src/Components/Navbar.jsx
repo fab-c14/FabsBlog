@@ -38,17 +38,17 @@ const AppNavbar = () => {
             ) : (
               <>
                 <LinkContainer to="/profile">
-                  <Nav.Link className="text-lg py-3 px-3 hover:text-gray-300 hover:bg-blue-300 rounded-lg b transition duration-200">
+                  <Nav.Link className="text-lg py-3 px-3 hover:shadow-xl hover:bg-blue-300 rounded-lg b transition duration-200">
                     Profile
                   </Nav.Link>
                 </LinkContainer>
-                <Button
+                <button
                   onClick={handleLogout}
-                  variant="danger"
-                  className="text-lg px-3 py-3 rounded-lg hover:bg-red-700 transition b duration-200"
+                
+                  className="text-lg px-3 py-3 bg-red-200 rounded-lg hover:bg-blue-200 hover:shadow-xl  transition b duration-200"
                 >
                   Logout
-                </Button>
+                </button>
               </>
             )}
           </Nav>

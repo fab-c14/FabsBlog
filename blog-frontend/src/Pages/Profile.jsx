@@ -41,7 +41,7 @@ const ProfilePage = () => {
               <Link  className="mr-2 disabled grow px-2 py-3 b text-black rounded-xl bg-yellow grow">
                 Edit Profile
               </Link>
-              <Link className='px-2 py-3 button bg-green-500 rounded-xl b grow text-black' to="/create-post">Settings</Link>
+              <Link className='px-2 py-3 button bg-green-500 rounded-xl b grow text-black' to="/create-post">Create Post</Link>
               </span>
             </Col>
           </Row>
