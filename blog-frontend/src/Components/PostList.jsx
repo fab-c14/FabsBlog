@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Pagination, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import BACKEND_URL from '../config';
-import '../index.css'; // Ensure your index.css applies imported Google Fonts
+import '../index.css'; // Ensure fonts and custom styles are imported
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(2);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -17,7 +19,7 @@ const PostList = () => {
         setPosts(data.posts);
         setTotalPages(data.totalPages);
       } catch (error) {
-        console.error('Error fetching posts', error);
+        console.error('Error fetching posts:', error);
       }
     };
     fetchPosts();
@@ -29,30 +31,52 @@ const PostList = () => {
 
   return (
     <Container className="mt-5">
-      <h1 className="tc f1 bg-red-300 rounded-lg px-3 py-3 shadow-xl " style={{ fontFamily: "'Poppins', sans-serif" }}>Blog Posts</h1>
+      <h1
+        className="text-center text-4xl font-bold py-3 mb-4 rounded shadow-xl bg-red-300"
+        style={{ fontFamily: "'Poppins', sans-serif" }}
+      >
+        Blog Posts
+      </h1>
       <Row>
         {posts.map((post) => (
-          <Col xs={12} key={post._id}>
-            <div className="post bg-gray-100 p-4 mb-4 rounded-lg shadow-xl d-flex align-items-center hover:bg-yellow-100 hover:cursor-pointer border-blue-800 hover:border-x-2 transition duration-400">
+          <Col xs={12} md={6} lg={4} key={post._id} className="mb-4">
+            <div className="bg-gray-100 p-4 rounded-lg shadow-xl border hover:bg-yellow-100 hover:shadow-2xl transition duration-300">
               {post.imageUrl && (
-                <img src={post.imageUrl} alt={post.title} className="w-25 mr-4 rounded" />
+                <img
+                  src={post.imageUrl}
+                  alt={post.title}
+                  className="rounded mb-3 w-full h-40 object-cover"
+                />
               )}
-              <div className="flex-grow-1">
-                <h2 className="f2 mb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>{post.title}</h2>
-                <p className="text-gray-700 mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  {post.content.substring(0,700)}...
-                </p>
-                {/* Uncomment below lines if you add a detailed view */}
-                {/* <Link to={`/posts/${post._id}`}>
-                  <Button variant="outline-primary">Read More</Button>
-                </Link> */}
+              <h2
+                className="text-2xl font-semibold mb-3"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {post.title}
+              </h2>
+
+              {/* Markdown Rendering */}
+              <ReactMarkdown
+                className="markdown-content text-gray-700 mb-4"
+                remarkPlugins={[remarkGfm]}
+              >
+                {typeof post.content === 'string' ? post.content : 'Invalid content format'}
+              </ReactMarkdown>
+
+              <div className="text-center">
+                <Link
+                  to={`/posts/${post._id}`}
+                  className="text-blue-500 hover:underline font-medium"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                >
+                  Read More
+                </Link>
               </div>
             </div>
           </Col>
         ))}
       </Row>
-
-      <div className="flex justify-center mt-4">
+      <div className="d-flex justify-content-center mt-4">
         <Pagination>
           {[...Array(totalPages)].map((_, index) => (
             <Pagination.Item

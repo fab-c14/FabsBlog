@@ -10,7 +10,6 @@ import AppNavbar from './Components/Navbar';
 import PrivateRoute from './Components/PrivateRoute';
 
 import ProfilePage from './Pages/Profile';
-import Footer from './Components/Footer';
 
 
 const App = () => {

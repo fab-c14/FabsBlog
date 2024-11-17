@@ -17,7 +17,7 @@ const AppNavbar = () => {
     <Navbar bg="" variant="light" expand="lg" className="font-bold font-soure-sans-pro bg-gray-200 rounded-xl shadow-lg mt-2">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className="font-bold text-3xl">BlogApp</Navbar.Brand>
+          <Navbar.Brand className="font-bold text-4xl">BlogApp</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -38,14 +38,14 @@ const AppNavbar = () => {
             ) : (
               <>
                 <LinkContainer to="/profile">
-                  <Nav.Link className="text-lg py-3 px-3 hover:shadow-xl hover:bg-blue-300 rounded-lg b transition duration-200">
+                  <Nav.Link className="text-lg py-3 px-3 hover:shadow-xl hover:bg-blue-300 rounded-lg b hover:underline transition duration-200">
                     Profile
                   </Nav.Link>
                 </LinkContainer>
                 <button
                   onClick={handleLogout}
                 
-                  className="text-lg px-3 py-3 bg-red-200 rounded-lg hover:bg-blue-200 hover:shadow-xl  transition b duration-200"
+                  className="text-lg px-3 py-3 bg-red-200 rounded-lg hover:bg-blue-200 hover:shadow-xl hover:underline transition b duration-200 "
                 >
                   Logout
                 </button>
