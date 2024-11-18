@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import AppNavbar from './Components/Navbar';
 import PrivateRoute from './Components/PrivateRoute';
-
+import PostDetailPage from './Pages/PostDetailPage';
 import ProfilePage from './Pages/Profile';
 
 
@@ -21,6 +21,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/posts/:id" element={<PostDetailPage />} />
 
         <Route
           path="/create-post"

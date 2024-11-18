@@ -1,8 +1,7 @@
-// postRoutes.js
 import express from 'express';
 import multer from 'multer';
-import { createPost } from '../controllers/postController.js';
-import { getPosts } from '../controllers/postController.js';
+import { getPosts,getPostById,createPost } from '../controllers/postController.js';
+
 const router = express.Router();
 
 // Configure multer for file storage
@@ -23,5 +22,13 @@ router.get('/posts', getPosts);
 
 // Existing route for creating a post
 router.post('/posts', upload.single('image'), createPost);
+
+
+
+
+// Route to get a post by ID
+router.get('/posts/:id', getPostById);
+
+
 
 export default router;

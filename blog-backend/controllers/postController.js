@@ -53,3 +53,27 @@ export const getPosts = async (req, res) => {
     res.status(500).json({ message: 'Error fetching posts', error });
   }
 };
+
+
+
+
+/**
+ * Get post by ID
+ * @route   GET /api/posts/:id
+ * @access  Public
+ */
+export const getPostById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    res.status(200).json(post);
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};

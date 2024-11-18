@@ -69,13 +69,14 @@ const PostList = () => {
               </ReactMarkdown>
 
               <div className="text-center">
-                <Link
-                  to={`/posts/${post._id}`}
-                  className="text-blue-500 hover:underline font-medium"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Read More
-                </Link>
+              <Link
+                to={`/posts/${post._id}`}
+                className="text-blue-500 hover:underline font-medium"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                Read More
+              </Link>
+
               </div>
             </div>
           </Col>
