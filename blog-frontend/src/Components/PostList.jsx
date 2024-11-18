@@ -40,7 +40,10 @@ const PostList = () => {
       <Row>
         {posts.map((post) => (
           <Col xs={12} md={6} lg={4} key={post._id} className="mb-4">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-xl border hover:bg-yellow-100 hover:shadow-2xl transition duration-300">
+            <div
+              className="bg-gray-100 p-4 rounded-lg shadow-xl border hover:transform hover:scale-125 hover:z-10 hover:bg-yellow-100 hover:shadow-2xl transition duration-300 relative"
+              style={{ overflow: 'hidden' }}
+            >
               {post.imageUrl && (
                 <img
                   src={post.imageUrl}
@@ -60,7 +63,9 @@ const PostList = () => {
                 className="markdown-content text-gray-700 mb-4"
                 remarkPlugins={[remarkGfm]}
               >
-                {typeof post.content === 'string' ? post.content : 'Invalid content format'}
+                {typeof post.content === 'string'
+                  ? post.content.substring(0, 100) + '...'
+                  : 'Invalid content format'}
               </ReactMarkdown>
 
               <div className="text-center">
