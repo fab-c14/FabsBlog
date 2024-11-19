@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import BACKEND_URL from '../config';
 import { useNavigate } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown'; // For markdown preview
-import remarkGfm from 'remark-gfm'; // For tables, lists, etc.
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw'; // Allow raw HTML rendering
+import 'highlight.js/styles/github.css'; // GitHub-like code block styling
+import BACKEND_URL from '../config';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -68,11 +71,14 @@ const PostForm = () => {
                 className="p-2 border-gray-300 rounded shadow-xl"
               />
               <small className="text-gray-500">
-                You can use <strong>**bold**</strong>, _italic_, and create lists:
-                <br />
-                - Item 1<br />
-                - Item 2<br />
-                `code snippets` are also supported.
+                You can use Markdown syntax like:
+                <ul>
+                  <li><code>**bold**</code> for bold text</li>
+                  <li><code>_italic_</code> for italic</li>
+                  <li><code>`code`</code> for inline code</li>
+                  <li><code>```js</code> for code blocks</li>
+                  <li><code>&gt;</code> for blockquotes</li>
+                </ul>
               </small>
             </Form.Group>
 
@@ -96,19 +102,19 @@ const PostForm = () => {
               {previewMode ? 'Edit Mode' : 'Preview Mode'}
             </Button>
 
-         
             <Button variant="primary" type="submit" className="mt-3 w-full">
               Submit
             </Button>
           </Form>
 
-        
+          {/* Markdown Preview */}
           {previewMode && (
             <div className="mt-6 p-4 bg-gray-100 rounded shadow-lg">
               <h3 className="text-lg font-semibold mb-3">Markdown Preview</h3>
               <ReactMarkdown
                 children={content}
                 remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw, rehypeHighlight]}
                 className="prose"
               />
             </div>

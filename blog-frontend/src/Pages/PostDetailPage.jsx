@@ -32,7 +32,7 @@ const PostDetailPage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Spinner animation="border" variant="primary" />
+        <Spinner animation="border text-blue-300" variant="primary" />
       </div>
     );
   }
@@ -57,7 +57,7 @@ const PostDetailPage = () => {
         <Image
           src={post.imageUrl}
           alt={post.title}
-          className="w-full mb-4 rounded shadow-lg"
+          className="w-full mb-4 rounded shadow-lg "
         />
       )}
       <ReactMarkdown
