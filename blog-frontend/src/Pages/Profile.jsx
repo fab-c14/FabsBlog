@@ -18,7 +18,6 @@ const ProfilePage = () => {
           <Row className="mb-4">
             <Col xs={12} md={4} className="flex justify-center">
               <div className="w-32 h-32 bg-gray-300 rounded-full overflow-hidden mt-5">
-               
                 <img
                   src={user.Avtar}
                   alt="User Avatar"
@@ -27,22 +26,27 @@ const ProfilePage = () => {
               </div>
             </Col>
             <Col xs={12} md={8}>
-              <h2 className="text-3xl font-bold mb-2">{user.name}</h2>
-              <p className="text-lg text-gray-700 mb-3">
+              <h2 className="text-3xl font-poppins font-bold mb-2">{user.name}</h2>
+              <p className="text-lg text-gray-700 mb-3 font-inter">
                 <strong>Email:</strong> {user.email}
               </p>
-              <p className="text-md text-gray-600 mb-3">
+              <p className="text-md text-gray-600 mb-3 font-inter">
                 <strong>Joined:</strong> {new Date(user.joinedDate).toLocaleDateString()}
               </p>
-              <p className="text-md text-gray-600 ">
+              <p className="text-md text-gray-600 font-lora">
                 <strong>Bio:</strong> {user.bio}
               </p>
-              <hr className='tc red w-50 mb-4 text-black' />
-              <span className='tc mb-3'>
-              <Link  className="mr-2 px-2 py-3 rounded-xl shadow-xl disabled no-underline bg-yellow-300 font-bold hover:border-2 hover:border-green-200">
-                Edit Profile
-              </Link>
-              <Link className='px-2 py-3 button bg-green-500 rounded-xl shadow-xl  font-bold grow text-black no-underline hover:border-2 hover:border-yellow-200 ' to="/create-post">Create Post</Link>
+              <hr className="tc red w-50 mb-4 text-black" />
+              <span className="tc mb-3">
+                <Link className="mr-2 px-2 py-3 rounded-xl shadow-xl disabled no-underline bg-yellow-300 font-bold hover:border-2 hover:border-green-200 font-poppins">
+                  Edit Profile
+                </Link>
+                <Link
+                  className="px-2 py-3 button bg-green-500 rounded-xl shadow-xl font-bold grow text-black no-underline hover:border-2 hover:border-yellow-200 font-poppins"
+                  to="/create-post"
+                >
+                  Create Post
+                </Link>
               </span>
             </Col>
           </Row>
