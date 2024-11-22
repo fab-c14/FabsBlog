@@ -3,6 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import 'highlight.js/styles/github.css';
 import { Container, Image, Spinner, Row, Col, Alert, Button } from 'react-bootstrap';
 import BACKEND_URL from '../config';
 import '../index.css';
@@ -97,8 +102,40 @@ const PostDetailPage = () => {
       {/* Content Section */}
       <Row>
         <Col>
-          <div className="p-4 bg-gray-100 rounded-lg shadow-sm markdown-content">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+          <div className="p-4 rounded-lg shadow-sm bg-gray-100">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeSlug, rehypeAutolinkHeadings]}
+              components={{
+                ul: ({ children, ...props }) => (
+                  <ul className="list-disc pl-6" {...props}>
+                    {children}
+                  </ul>
+                ),
+                ol: ({ children, ...props }) => (
+                  <ol className="list-decimal pl-6" {...props}>
+                    {children}
+                  </ol>
+                ),
+                table: ({ children, ...props }) => (
+                  <table className="table-auto border-collapse border border-gray-300" {...props}>
+                    {children}
+                  </table>
+                ),
+                th: ({ children, ...props }) => (
+                  <th className="border border-gray-300 px-4 py-2 bg-gray-200" {...props}>
+                    {children}
+                  </th>
+                ),
+                td: ({ children, ...props }) => (
+                  <td className="border border-gray-300 px-4 py-2" {...props}>
+                    {children}
+                  </td>
+                ),
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
         </Col>
       </Row>
