@@ -1,4 +1,5 @@
 import User from '../models/User.js';
+
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -62,4 +63,25 @@ export const login = async (req, res) => {
   }
 };
 
+
+
+export const sendOtp = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    // Generate a random OTP (6 digits)
+    const otp = Math.floor(100000 + Math.random() * 900000);
+
+    // Save the OTP to the database or cache (like Redis)
+    // For demonstration, we'll log it instead
+    console.log(`Generated OTP for ${email}: ${otp}`);
+
+    // Send the OTP via email
+    await sendEmail(email, 'Your OTP Code', `Your OTP is: ${otp}`);
+
+    res.status(200).json({ message: 'OTP sent successfully', otp }); // Include `otp` for testing purposes only in development
+  } catch (error) {
+    res.status(500).json({ message: 'Error sending OTP', error });
+  }
+};
 
