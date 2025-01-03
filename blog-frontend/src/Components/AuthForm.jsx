@@ -7,14 +7,14 @@ import { useNavigate } from 'react-router-dom';
 const AuthForm = ({ type }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // For error messages
-  const [loading, setLoading] = useState(false); // Loading state
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Clear previous errors
-    setLoading(true); // Start loading
+    setError(null);
+    setLoading(true);
 
     const url = type === 'login' ? `${BACKEND_URL}/api/auth/login` : `${BACKEND_URL}/api/auth/register`;
 
@@ -24,57 +24,55 @@ const AuthForm = ({ type }) => {
       navigate('/');
     } catch (error) {
       console.error('Authentication error:', error);
-      setError(error.response?.data?.message || 'Something went wrong. Please try again.'); // Handle errors gracefully
+      setError(error.response?.data?.message || 'Something went wrong. Please try again.');
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
     <Container className="min-h-screen flex items-center justify-center">
-      <Row className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+      <Row className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <Col>
-          <h2 className="text-3xl font-playfair rounded-sm px-2 py-2 mb-4 text-center">
-            {type === 'login' ? 'Login' : 'Register'}
+          <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+            {type === 'login' ? 'Welcome Back!' : 'Create an Account'}
           </h2>
           {error && (
-            <div className="text-red-600 mb-4 text-center font-bold">{error}</div>
+            <div className="text-red-500 mb-4 text-center font-semibold">{error}</div>
           )}
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail" className="mb-3">
-              <Form.Label className="font-medium text-lg font-inter">
-                Email address
-              </Form.Label>
+            <Form.Group controlId="formBasicEmail" className="mb-4">
+              <Form.Label className="text-lg font-inter text-gray-600">Email Address</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="shadow-lg py-3 hover:text-xl rounded-full border-gray-300 focus:border-blue-400"
+                className="py-3 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-lg"
                 required
+                style={{ fontSize: '18px' }} // Increased input font size
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword" className="mb-4">
-              <Form.Label className="font-medium text-lg font-inter">
-                Password
-              </Form.Label>
+            <Form.Group controlId="formBasicPassword" className="mb-6">
+              <Form.Label className="text-lg font-inter text-gray-600">Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="shadow-lg py-3 hover:text-xl rounded-full border-gray-300 focus:border-blue-400"
+                className="py-3 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-lg"
                 required
+                style={{ fontSize: '18px' }} // Increased input font size
               />
             </Form.Group>
 
             <button
               type="submit"
-              className={`w-full py-3 shadow-lg text-lg rounded-xl font-bold font-poppins transition duration-200 ${
+              className={`w-full py-3 rounded-lg text-lg font-poppins font-bold text-white transition duration-200 ${
                 loading
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-green-500 hover:bg-green-600 text-white'
+                  : 'bg-blue-500 hover:bg-blue-600'
               }`}
               disabled={loading}
             >

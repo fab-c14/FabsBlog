@@ -5,10 +5,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+console.log(process.env.SECRET_TOKEN);
 // Generate JWT token
 const generateToken = (userId) => {
+  
   return jwt.sign({ id: userId }, process.env.SECRET_TOKEN, {
-    expiresIn: '1h', // Token expires in 1 hour
+    expiresIn: '3d',
   });
 };
 
