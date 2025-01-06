@@ -13,9 +13,21 @@ const PostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [error, setError] = useState(null);
   const [previewMode, setPreviewMode] = useState(false);
   const navigate = useNavigate();
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file)); // Generate a local preview URL
+    } else {
+      setImage(null);
+      setImagePreview(null);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,9 +99,19 @@ const PostForm = () => {
               <Form.Label className="font-medium">Upload Image</Form.Label>
               <Form.Control
                 type="file"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={handleImageChange}
                 className="p-1 shadow-xl"
               />
+              {imagePreview && (
+                <div className="mt-3">
+                  <p className="font-medium">Image Preview:</p>
+                  <img
+                    src={imagePreview}
+                    alt="Selected Preview"
+                    className="w-full max-h-64 rounded-lg shadow-md object-cover"
+                  />
+                </div>
+              )}
             </Form.Group>
 
             {/* Markdown Preview Toggle */}
